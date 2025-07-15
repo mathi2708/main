@@ -53,7 +53,17 @@ def analyze_logs():
         })
 
     last_analysis_results = results
-    return {"analysis_results": results}
+    # return {"analysis_results": results}
+
+    summary_response = interpret_prompt(
+        prompt="Summarize the anomalies found for each shipper",
+        anomaly_results=results
+    )
+
+    return {
+        # "analysis_results": results,
+        "nlp_summary": summary_response
+    }
 
 @app.post("/query/")
 def nlp_query(prompt: str = Form(...)):
