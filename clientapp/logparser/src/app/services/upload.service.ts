@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class UploadService {
-  private uploadUrl = 'https://8001-user-2.cluster-ef7hhz6pifddiqhqwdxcaxcaao.cloudworkstations.dev/docs#/default/upload_log_upload__post';
+  private uploadUrl = ' http://127.0.0.1:8001/upload/';
   private analyzeUrl = 'http://localhost:8000/analyze-log/';
 
   constructor(private http: HttpClient) {}
@@ -16,6 +16,7 @@ export class UploadService {
     files.forEach(file => {
       formData.append('files', file);
     });
+    alert(this.uploadUrl)
     return this.http.post(this.uploadUrl, formData);
   }
 
