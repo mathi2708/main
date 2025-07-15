@@ -1,0 +1,24 @@
+<mat-card class="upload-card">
+    
+    <mat-card-content>
+      <app-file-upload (logUploaded)="onLogUploaded()"></app-file-upload>
+  
+      <div class="actions" *ngIf="logUploaded && !showAnalyse">
+        <button mat-raised-button color="primary" (click)="onAnalyseClick()">
+          Analyse
+        </button>
+      </div>
+  
+      <!-- <div class="spinner">
+        <mat-spinner diameter="40"></mat-spinner>
+      </div> -->
+    </mat-card-content>
+  </mat-card>
+  
+  <mat-card class="analysis-card" *ngIf="showAnalyse">
+    <mat-card-title>Log Analysis Result</mat-card-title>
+    <mat-card-content>
+      <app-log-analysis></app-log-analysis>
+    </mat-card-content>
+  </mat-card>
+  
