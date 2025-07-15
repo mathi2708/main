@@ -1,0 +1,38 @@
+<!-- Spinner Section -->
+<div *ngIf="isLoading" class="loading-container">
+    <mat-spinner diameter="50"></mat-spinner>
+    <span class="loading-text">Loading...</span>
+  </div>
+  
+  <!-- Upload Section -->
+  <mat-card class="upload-card">
+   
+    <mat-card-content>
+  
+      <input type="file" (change)="onFileSelected($event)" multiple>
+      
+
+      <div class="upload-actions" style="padding-top:10px">
+        <button mat-raised-button color="primary" (click)="uploadFiles()">
+          Upload
+        </button>
+      </div>
+  
+      <mat-list *ngIf="uploadedFiles.length > 0">
+        <mat-list-item *ngFor="let file of uploadedFiles">
+         
+          {{ file }}
+        </mat-list-item>
+      </mat-list>
+  
+    </mat-card-content>
+  </mat-card>
+  <div style="height:20px;"></div>
+  <!-- Chat Typing Output -->
+  <mat-card class="chat-card" *ngIf="displayedText">
+    <mat-card-title>Log Analysis</mat-card-title>
+    <mat-card-content>
+      <div class="chat-bubble" [innerHTML]="displayedText"></div>
+    </mat-card-content>
+  </mat-card>
+  

@@ -1,0 +1,26 @@
+<!-- src/app/log-analysis/log-analysis.component.html -->
+<button class="btn primary" mat-raised-button (click)="fetchLogAnalysis()">Analyze Logs</button>
+<table *ngIf="logAnalysis.length > 0" border="1">
+  <thead>
+    <tr>
+      <th>Filename</th>
+      <th>Total Lines</th>
+      <th>Errors</th>
+      <th>Warnings</th>
+      <th>Info</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let log of logAnalysis">
+      <td>{{ log.filename }}</td>
+      <td>{{ log.total_lines }}</td>
+      <td>{{ log.errors }}</td>
+      <td>{{ log.warnings }}</td>
+      <td>{{ log.info }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<div *ngIf="logAnalysis.length === 0">
+  No log files analyzed yet.
+</div>
